@@ -25,6 +25,9 @@ void free(unsigned int** tab2D,long n);
 void print(unsigned int** tab2D,long n,long m,string titre);
 void init(unsigned int**  ptrTab2D, long n, long m, double value);
 
+//int
+//bool isEgale(int* ptrA, int* ptrB, int n, int m);
+
 #endif 
 
 /*----------------------------------------------------------------------*\

@@ -2,8 +2,7 @@
 #include <string>
 #include <math.h>
 #include <stdlib.h>
-
-#include "matrixRowMajorTools.h"
+#include "rowMajorTools.h"
 
 using std::cout;
 using std::endl;
@@ -26,10 +25,10 @@ using std::string;
  *
  * [a11 a12 a13 | a21 a22 a32 | a31 a32 a33]
  */
-void print(long* ptrA, int n, int m, string titre)
+void print(int* ptrA, int n, int m, string titre)
     {
     cout << titre << " (n,m)=(" << n << "," << m << ")" << endl;
-    for (long s = 1; s <= n * m; s++)
+    for (int s = 1; s <= n * m; s++)
 	{
 	cout << *ptrA++ << "\t";
 	if (s % m == 0)
@@ -37,39 +36,6 @@ void print(long* ptrA, int n, int m, string titre)
 	    cout << endl;
 	    }
 	}
-    }
-
-/**
- * a11 a12 a13
- * a21 a22 a32
- * a31 a32 a33
- *
- * vectoriser
- *
- * [a11 a12 a13 | a21 a22 a32 | a31 a32 a33]
- */
-bool isEgale(long* ptrA, long* ptrB, int n, int m)
-    {
-    for (int s = 1; s <= n * m; s++)
-	{
-	if (*ptrA != *ptrB)
-	    {
-	    int i;
-	    int j;
-
-	    to2D1(s, i, j,m);
-
-	    cout << "Matrix : isEgale : error : (i,j)=(" << i << "," << j << ")";
-	    cout << " : (x1,x2)=(" << *ptrA << "," << *ptrB << ")";
-	    cout << " : delta = " << abs(*ptrA != *ptrB) << endl;
-
-	    return false;
-	    }
-	ptrA++;
-	ptrB++;
-	}
-
-    return true;
     }
 
 /**
@@ -104,7 +70,6 @@ bool isEgale(int* ptrA, int* ptrB, int n, int m)
 
     return true;
     }
-
 
 /**
  * s in [1,nm]

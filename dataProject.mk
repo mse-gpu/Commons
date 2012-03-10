@@ -20,9 +20,9 @@ TARGET_NAME:=Common
 TARGET_MODE:=EXE
 
 #Path where target will be build (relative or absolute for a ram disk by example)
-#TARGET_PATH:=Q:/${USER}/Targets/${TARGET_NAME}
+#TARGET_PATH:=Q:/${USER}/Targets/${TARGET_NAME}#windows ramdrive
 TARGET_PATH:=/tmp/ramdrive/${USER}/Targets/${TARGET_NAME}
-#TARGET_PATH:=target
+#TARGET_PATH:=target#local
 
 #Path where the targe will be copied just after building process (usefull for link project's)
 #mimimum : nothing
@@ -39,7 +39,7 @@ CODE_DEFINE_VARIABLES+=
 #Circular dependancy are not allowed!
 #Use space if multiple dependency to separate folder to include
 #minimum : rien
-SRC_AUX:=  ../cppTestAPI
+SRC_AUX+=  ../cppTestAPI/src
 
 #########
 #  End  #

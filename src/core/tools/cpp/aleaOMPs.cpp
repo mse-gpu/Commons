@@ -1,6 +1,5 @@
-#include <math.h>
-#include <cstdlib>
-#include "aleaTools.h"
+#include "omp.h"
+#include "aleaOMP.h"
 
 /*----------------------------------------------------------------------*\
  |*			Declaration 					*|
@@ -10,9 +9,19 @@
  |*		Public			*|
  \*-------------------------------------*/
 
+double uniform01_OMP(void);
+double uniform_OMP(double a, double b);
+
 /*--------------------------------------*\
  |*		Private			*|
  \*-------------------------------------*/
+
+static long MULTIPLIER = 1366;
+static long ADDEND = 150889;
+static long PMOD = 714025;
+
+long random_last = 0;
+#pragma omp threadprivate(random_last)
 
 /*----------------------------------------------------------------------*\
  |*			Implementation 					*|
@@ -22,41 +31,25 @@
  |*		Public			*|
  \*-------------------------------------*/
 
-/**
- * in [a,b]
- * use first once : srand(time(NULL));
- * Attention : pas thread safe
- */
-float uniformeAB(float a,float b)
-    {
-    return a+uniforme01()*(b-a);
-    }
-
-/**
- * in [0,1]
- * use first once : srand(time(NULL));
- * Attention : pas thread safe
- */
-float uniforme01(void)
-    {
-    // rand in [0,RAND_MAX]
-    return rand()/(float)RAND_MAX;
-    }
-
-/**
- * in [a,b]
- * use first once : srand(time(NULL));
- * Attention : pas thread safe
- */
-int uniformeAB(int a,int b)
-    {
-    // rand in [0,RAND_MAX]
-    return a+rand()%(b-a+1);
-    }
-
 /*--------------------------------------*\
  |*		Private			*|
  \*-------------------------------------*/
+
+double uniform01_OMP(void)
+    {
+    long random_next;
+
+    random_next = (MULTIPLIER * random_last + ADDEND) % PMOD;
+    random_last = random_next;
+
+    return ((double) random_next / (double) PMOD);
+
+    }
+
+double uniform_OMP(double a, double b)
+    {
+    return a + uniform01_OMP() * (b - a);
+    }
 
 /*----------------------------------------------------------------------*\
  |*			End	 					*|

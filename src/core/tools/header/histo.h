@@ -10,9 +10,9 @@
  |*		Public			*|
  \*-------------------------------------*/
 
-void fillRandom(unsigned char* tabData, long n);
-bool isHistoOk(unsigned char* tabData, long n, unsigned int* tabFrequence);
-void histogramme(unsigned char* tabData, long n, unsigned int* tabFrequence);
+void fillRandom(unsigned char* tabData, int n);
+bool isHistoOk(unsigned char* tabData, int n, unsigned int* tabFrequence);
+void histogramme(unsigned char* tabData, int n, unsigned int* tabFrequence);
 
 
 #endif 

@@ -26,9 +26,7 @@ ARFLAGS:=
 LDFLAGS_AUX:=
 
 #Injection de variable dans le code (same as #define XXX YYY)
-CODE_DEFINE_VARIABLES:=WIN32
-#WIN32 pour cppTest
-#CODE_DEFINE_VARIABLES:=LINUX_CBI
+CODE_DEFINE_VARIABLES:=
 
 #Minimum: rien!
 #true (ou n'importe quoi) pour activer!

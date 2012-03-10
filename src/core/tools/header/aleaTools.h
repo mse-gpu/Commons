@@ -28,7 +28,7 @@ float uniforme01(void);
  * in [a,b]
  * use first once : srand(time(NULL));
  */
-long uniformeAB(long a,long b);
+int uniformeAB(int a,int b);
 
 #endif 
 

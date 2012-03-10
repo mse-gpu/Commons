@@ -1,9 +1,11 @@
-#ifndef MATRIX_ROW_MAJOR_TOOLS_H_
-#define MATRIX_ROW_MAJOR_TOOLS_H_
+#ifndef MATRIX_TOOLS_H_
+#define MATRIX_TOOLS_H_
 
 #include <string>
 
 using std::string;
+
+
 
 /*----------------------------------------------------------------------*\
  |*			Declaration 					*|
@@ -22,7 +24,7 @@ using std::string;
  *
  * [a11 a12 a13 | a21 a22 a32 | a31 a32 a33]
  */
-void print(long* ptrA, int n, int m, string titre);
+void print(int* ptrA, int n, int m, string titre);
 
 /**
  * a11 a12 a13
@@ -33,7 +35,7 @@ void print(long* ptrA, int n, int m, string titre);
  *
  * [a11 a12 a13 | a21 a22 a32 | a31 a32 a33]
  */
-bool isEgale(long* ptrA,long* ptrB,int n,int m);
+bool isEgale(int* ptrA,int* ptrB,int n,int m);
 
 /**
  * s in [1,nm]

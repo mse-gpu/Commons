@@ -4,7 +4,7 @@
 #
 # Contrainte
 #
-#	Dans les dï¿½finitions de variables ci-dessous, ne laisser jamais d'espace ï¿½ la fin!!!
+#	Dans les définitions de variables ci-dessous, ne laisser jamais d'espace à la fin!!!
 #
 
 #########
@@ -12,25 +12,24 @@
 #########
 
 #Option de compilation 
-#Elles seront ensuite surchargï¿½es automatiquement (par exemple en fonction du type de la target)
+#Elles seront ensuite surchargées automatiquement (par exemple en fonction du type de la target)
 #Version minimale : Ne rien metter laisser vierge!
 CXXFLAGS:= /w 
 CXXFLAGS+= /QxSSSE3
-CXXFLAGS+= /O3 /fast /Qparallel /Qpar-threshold100  
+CXXFLAGS+= /fast /O3 /Qparallel /Qpar-threshold100  
 CXXFLAGS+= /Qopenmp
+CXXFLAGS+= /EHsc
 
 #Option de compilation Static Lib 
 ARFLAGS:=
 
 #Option de linkage
-#Elles seront ensuite surchargï¿½es automatiquement (par exemple en fonction du type de la target)
+#Elles seront ensuite surchargées automatiquement (par exemple en fonction du type de la target)
 #Version minimale : Ne rien metter laisser vierge!
 LDFLAGS_AUX:=
 
 #Injection de variable dans le code (same as #define XXX YYY)
-CODE_DEFINE_VARIABLES:=WIN32
-#WIN32 pour cppTest
-#CODE_DEFINE_VARIABLES:=LINUX_CBI
+CODE_DEFINE_VARIABLES:=
 
 #Minimum: rien!
 #true (ou n'importe quoi) pour activer!

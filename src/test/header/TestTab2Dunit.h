@@ -1,17 +1,23 @@
-#ifndef VECTOR_TOOLS_H_
-#define VECTOR_TOOLS_H_
+#ifndef TEST_TAB2D_JUNIT_H
+#define TEST_VECTOR_JUNIT_H
+
+#include "cpptest.h"
 
 /*----------------------------------------------------------------------*\
  |*			Declaration 					*|
  \*---------------------------------------------------------------------*/
 
-void addVector(int* tabSum, int* tab1, int* tab2, int n);
-void addVector(float* tabSum, float* tab1, float* tab2, int n);
+class TestTab2DJunit: public Test::Suite
+    {
+    public:
 
-float sum(float* ptrTab, int n);
-void incrementer(int* ptrv, int n, int delta);
-double norme(double* ptrTab, int n);
-long dotProd(int* v1, int* v2, int n);
+	TestTab2DJunit(void);
+
+    private:
+
+	void testDouble(void);
+	void testUnsignedInt(void);
+    };
 
 #endif
 

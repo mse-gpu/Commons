@@ -14,7 +14,6 @@ using std::endl;
 
 // double
 
-
 void alloc(double**& ptrTab2D, long n, long m)
     {
     ptrTab2D = new double*[n];
@@ -100,6 +99,8 @@ void init(unsigned int** ptrTab2D, long n, long m, double value)
 	    }
 	}
     }
+
+
 
 /*--------------------------------------*\
  |*		Private			*|

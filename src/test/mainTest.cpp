@@ -1,18 +1,22 @@
-#include <math.h>
-#include <cstdlib>
-#include "aleaTools.h"
+#include <stdlib.h>
+#include <iostream>
+
+#include "cppTest+.h"
+
+#include "TestTab2Dunit.h"
+
+using std::cout;
+using std::endl;
 
 /*----------------------------------------------------------------------*\
  |*			Declaration 					*|
  \*---------------------------------------------------------------------*/
 
 /*--------------------------------------*\
- |*		Public			*|
- \*-------------------------------------*/
-
-/*--------------------------------------*\
  |*		Private			*|
  \*-------------------------------------*/
+
+static bool testALL(void);
 
 /*----------------------------------------------------------------------*\
  |*			Implementation 					*|
@@ -22,41 +26,28 @@
  |*		Public			*|
  \*-------------------------------------*/
 
-/**
- * in [a,b]
- * use first once : srand(time(NULL));
- * Attention : pas thread safe
- */
-float uniformeAB(float a,float b)
+int mainTest(void)
     {
-    return a+uniforme01()*(b-a);
-    }
+    bool isOk = testALL();
 
-/**
- * in [0,1]
- * use first once : srand(time(NULL));
- * Attention : pas thread safe
- */
-float uniforme01(void)
-    {
-    // rand in [0,RAND_MAX]
-    return rand()/(float)RAND_MAX;
-    }
+    cout << "\nisOK = " << isOk << endl;
 
-/**
- * in [a,b]
- * use first once : srand(time(NULL));
- * Attention : pas thread safe
- */
-int uniformeAB(int a,int b)
-    {
-    // rand in [0,RAND_MAX]
-    return a+rand()%(b-a+1);
+    return isOk ? EXIT_SUCCESS : EXIT_FAILURE;
     }
 
 /*--------------------------------------*\
  |*		Private			*|
  \*-------------------------------------*/
+
+bool testALL(void)
+    {
+    Test::Suite testSuite;
+
+    testSuite.add(std::auto_ptr<Test::Suite>(new TestTab2DJunit()));
+
+    //return runTestHtml("TestALL_HTML", testSuite); // Attention: html create in working directory!!
+    return runTestConsole("TestALL_Console", testSuite);
+    }
 
 /*----------------------------------------------------------------------*\
  |*			End	 					*|

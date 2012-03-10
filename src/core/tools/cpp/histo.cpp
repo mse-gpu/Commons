@@ -1,6 +1,7 @@
 #include "histo.h"
 #include "aleaTools.h"
 #include "vectorTools.h"
+#include "tab1DTools.h"
 #include "ChronoOMPs.h"
 
 /*----------------------------------------------------------------------*\
@@ -11,18 +12,18 @@
  |*		Public			*|
  \*-------------------------------------*/
 
-void fillRandom(unsigned char* ptrTabData, long n)
+void fillRandom(unsigned char* ptrTabData, int n)
     {
     srand(time(NULL));
 
     #pragma omp parallel for
-    for (long i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
 	{
-	ptrTabData[i-1] = uniformeAB((long) 0, (long) 255);
+	ptrTabData[i-1] = uniformeAB((int) 0, (int) 255);
 	}
     }
 
-bool isHistoOk(unsigned char* tabData, long n, unsigned int* tabFrequence)
+bool isHistoOk(unsigned char* tabData, int n, unsigned int* tabFrequence)
     {
     unsigned int* tabFrequenceSequentiel = new unsigned int[256];
 
@@ -38,12 +39,12 @@ bool isHistoOk(unsigned char* tabData, long n, unsigned int* tabFrequence)
     return isOk;
     }
 
-void histogramme(unsigned char* tabData, long n, unsigned int* tabFrequence)
+void histogramme(unsigned char* tabData, int n, unsigned int* tabFrequence)
     {
     ChronoOMPs chrono;
 
     init(tabFrequence, 256, 0);
-    for (long i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
 	{
 	tabFrequence[tabData[i - 1]]++; // tabData in [0,255]
 	}
